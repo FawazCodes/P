@@ -11,28 +11,35 @@
     </div>
     <div id="menu">
       <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
+        <li class="tooltip">Home<span class="tooltiptext">Go to Home</span></li>
+        <li class="tooltip">About<span class="tooltiptext">Learn About Us</span></li>
+        <li class="tooltip">Contact<span class="tooltiptext">Get in Touch</span></li>
       </ul>
     </div>
     <div id="content">
       <!-- Window-like container for News -->
-      <div class="window-container">
+      <div class="window-container draggable">
         <div class="title-bar">News</div>
         <div class="window-content">
           <marquee>Breaking News: Business is booming!</marquee>
         </div>
       </div>
       <!-- Animated GIF -->
-      <img src="path/to/your/gif.gif" alt="Funny GIF">
+      <img src="path/to/your/gif.gif" alt="Funny GIF" class="pixelated">
       <!-- Button with Pop-up Alert -->
-      <button id="boomButton">Make it BOOM!</button>
+      <button id="boomButton" class="sound-effect">Make it BOOM!</button>
       <!-- Visitor Counter -->
-      <div id="visitor-counter">You are visitor number: 123</div>
+      <div id="visitor-counter" class="blinking-text">You are visitor number: 123</div>
     </div>
     <div id="footer">
       <p>© 2023 My Website</p>
+    </div>
+  </div>
+  <!-- Modal Pop-up -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Some text in the Modal..</p>
     </div>
   </div>
   <script src="script.js"></script>
