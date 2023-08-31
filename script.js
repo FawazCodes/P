@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
       clearInterval(loading);
       loadingBarContainer.style.display = 'none';
     } else {
-      width++;
+      width += 2;
       loadingBar.style.width = width + '%';
     }
-  }, 30);
+  }, 15);
 });
 
 /* New Minesweeper Game */
