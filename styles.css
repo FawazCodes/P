@@ -26,3 +26,17 @@
     transform: translateY(-10px);
   }
 }
+
+/* Waving Text */
+.waving-text {
+  animation: wave 1s infinite alternate;
+}
+
+@keyframes wave {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
+}
