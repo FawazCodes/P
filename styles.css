@@ -1,38 +1,64 @@
 
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #C0C0C0;
   cursor: url('custom-cursor.cur'), auto;
+}
+
+/* Taskbar */
+.taskbar {
+  background-color: #000080;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.taskbar button {
+  background-color: #000080;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 /* Header */
 .header {
-  background-color: blue;
-  color: white;
+  background-color: #808080;
+  color: black;
   padding: 10px;
   text-align: center;
+  border-bottom: 2px solid #000;
 }
 
 /* Menu */
 .menu {
-  background-color: gray;
-  overflow: hidden;
+  background-color: #808080;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 2px solid #000;
 }
 
-.menu a {
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.menu button {
+  background-color: #C0C0C0;
+  border: 2px outset #000;
+  color: black;
+  padding: 10px;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 /* Content */
 .content {
   padding: 20px;
+  background-color: #FFF;
+  min-height: calc(100vh - 180px);
 }
 
 .content-section {
@@ -41,49 +67,8 @@ body {
 
 /* Footer */
 .footer {
-  background-color: #f1f1f1;
+  background-color: #808080;
   padding: 10px;
   text-align: center;
-}
-
-/* Flashing Text */
-.flashing-text {
-  animation: flash 1s infinite alternate;
-}
-
-@keyframes flash {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-/* Dancing Text */
-.dancing-text {
-  animation: dance 1s infinite alternate;
-}
-
-@keyframes dance {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-10px);
-  }
-}
-
-/* Waving Text */
-.waving-text {
-  animation: wave 1s infinite alternate;
-}
-
-@keyframes wave {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(15deg);
-  }
+  border-top: 2px solid #000;
 }
