@@ -1,57 +1,47 @@
-// Modal Pop-up
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("boomButton");
-var span = document.getElementsByClassName("close")[0];
+// Pop-up alert for title bar
+document.addEventListener("DOMContentLoaded", function() {
+  const titleBar = document.querySelector(".title-bar");
 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-// Sound Effect
-document.querySelector('.sound-effect').addEventListener('click', function() {
-  var audio = new Audio('click-sound.mp3');
-  audio.play();
+  titleBar.addEventListener("click", function() {
+    alert("You clicked the title bar!");
+  });
 });
 
-// Draggable Element
-dragElement(document.querySelector(".draggable"));
+// Menu interactivity
+const menuItems = document.querySelectorAll("#menu ul li");
+const content = document.getElementById("content");
 
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  elmnt.onmousedown = dragMouseDown;
+menuItems.forEach((item) => {
+  item.addEventListener("click", function() {
+    const text = this.textContent;
+    updateContent(text);
+  });
+});
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
+function updateContent(menuText) {
+  switch (menuText) {
+    case "Home":
+      content.innerHTML = "<h2>Home</h2><p>Welcome to the home page!</p>";
+      break;
+    case "About":
+      content.innerHTML = "<h2>About</h2><p>This is the about section.</p>";
+      break;
+    case "Contact":
+      content.innerHTML = "<h2>Contact</h2><p>Contact us at: example@example.com</p>";
+      break;
+    default:
+      content.innerHTML = "<h2>Error</h2><p>Page not found.</p>";
   }
 }
+
+// Background music (place an audio file in your project folder)
+const audio = new Audio('background-music.mp3');
+audio.loop = true;
+audio.play();
+
+// Boom Button
+const boomButton = document.getElementById("boomButton");
+
+boomButton.addEventListener("click", function() {
+  alert("BOOM! Business is booming!");
+});
