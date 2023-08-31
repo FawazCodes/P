@@ -1,27 +1,57 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const menuItems = document.querySelectorAll("#menu ul li");
-  const content = document.getElementById("content");
+// Modal Pop-up
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("boomButton");
+var span = document.getElementsByClassName("close")[0];
 
-  menuItems.forEach((item) => {
-    item.addEventListener("click", function() {
-      const text = this.textContent;
-      updateContent(text);
-    });
-  });
+btn.onclick = function() {
+  modal.style.display = "block";
+}
 
-  function updateContent(menuText) {
-    switch (menuText) {
-      case "Home":
-        content.innerHTML = "<h2>Home</h2><p>Welcome to the home page!</p>";
-        break;
-      case "About":
-        content.innerHTML = "<h2>About</h2><p>This is the about section.</p>";
-        break;
-      case "Contact":
-        content.innerHTML = "<h2>Contact</h2><p>Contact us at: example@example.com</p>";
-        break;
-      default:
-        content.innerHTML = "<h2>Error</h2><p>Page not found.</p>";
-    }
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
   }
+}
+
+// Sound Effect
+document.querySelector('.sound-effect').addEventListener('click', function() {
+  var audio = new Audio('click-sound.mp3');
+  audio.play();
 });
+
+// Draggable Element
+dragElement(document.querySelector(".draggable"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  elmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
