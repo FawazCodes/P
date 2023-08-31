@@ -1,4 +1,51 @@
 
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  cursor: url('custom-cursor.cur'), auto;
+}
+
+/* Header */
+.header {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Menu */
+.menu {
+  background-color: gray;
+  overflow: hidden;
+}
+
+.menu a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Content */
+.content {
+  padding: 20px;
+}
+
+.content-section {
+  display: none;
+}
+
+/* Footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
 /* Flashing Text */
 .flashing-text {
   animation: flash 1s infinite alternate;
