@@ -45,3 +45,64 @@ const boomButton = document.getElementById("boomButton");
 boomButton.addEventListener("click", function() {
   alert("BOOM! Business is booming!");
 });
+
+/* New Playful Elements */
+
+// Sound Effects
+function playSound(soundFile) {
+  var audio = new Audio(soundFile);
+  audio.play();
+}
+
+// Attach sound effects to specific events
+document.addEventListener('DOMContentLoaded', function() {
+  // Example: Play a sound when a button with the class 'button' is clicked
+  var buttons = document.querySelectorAll('.button');
+  buttons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      playSound('click-sound.mp3');
+    });
+  });
+});
+
+/* New Loading Bar */
+
+// Loading Bar
+document.addEventListener('DOMContentLoaded', function() {
+  var loadingBar = document.getElementById('loading-bar');
+  var loadingBarContainer = document.getElementById('loading-bar-container');
+  var width = 0;
+  var loading = setInterval(function() {
+    if (width >= 100) {
+      clearInterval(loading);
+      loadingBarContainer.style.display = 'none';
+    } else {
+      width++;
+      loadingBar.style.width = width + '%';
+    }
+  }, 30);
+});
+
+/* New Minesweeper Game */
+
+// Minesweeper Game
+function toggleMinesweeper() {
+  var container = document.getElementById('minesweeper-container');
+  container.style.display = (container.style.display === 'none' || container.style.display === '') ? 'block' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize Minesweeper game board here
+  // For demonstration purposes, we'll just add a simple "Hello, Minesweeper!" text
+  var board = document.getElementById('minesweeper-board');
+  board.innerHTML = 'Hello, Minesweeper!';
+});
+
+/* Browser Compatibility */
+
+// Browser Compatibility Check
+document.addEventListener('DOMContentLoaded', function() {
+  if (!('loading' in HTMLImageElement.prototype)) {
+    alert('Your browser does not support some of the latest features. Consider updating for the best experience.');
+  }
+});
