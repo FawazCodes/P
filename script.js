@@ -106,3 +106,22 @@ document.addEventListener('DOMContentLoaded', function() {
     alert('Your browser does not support some of the latest features. Consider updating for the best experience.');
   }
 });
+
+/* Added Retro Features */
+
+function showBSOD() {
+  var bsod = document.getElementById('bsod');
+  bsod.style.display = 'block';
+  setTimeout(function() {
+    bsod.style.display = 'none';
+  }, 5000);
+}
+
+
+function randomFreeze() {
+  var body = document.querySelector('body');
+  body.style.pointerEvents = 'none';
+  setTimeout(function() {
+    body.style.pointerEvents = 'auto';
+  }, 2000);
+}
