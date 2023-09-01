@@ -4,66 +4,42 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>موقع فواز</title>
+  <title>Retro Windows XP/98 Themed Website</title>
   <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
 
-<body style="cursor: url('custom-cursor.cur'), auto; background-color: #C0C0C0;">
+<body>
+  <header class="header">
+    <h1>Welcome to Retro Windows!</h1>
+  </header>
 
-  <!-- Taskbar -->
-  <div class="taskbar">
-    <button onclick="showBSOD()">Start</button>
-  </div>
-
-  <!-- Header -->
-  <div class="header">
-    <h1>موقع فوااااز</h1>
-  </div>
-
-  <!-- Menu -->
-  <div class="menu">
+  <nav class="menu">
     <button onclick="loadContent('home')">Home</button>
-    <button onclick="loadContent('news')">News</button>
     <button onclick="loadContent('about')">About</button>
-    <button onclick="loadContent('contact')">Contact</button>
-  </div>
+    <button onclick="loadContent('news')">News</button>
+  </nav>
 
-  <!-- Content Area -->
   <div class="content">
-    <!-- Home Content -->
     <div id="home" class="content-section">
-      <h2>حياك الله!</h2>
+      <h2>Home</h2>
+      <p>This is the home section.</p>
     </div>
-    <!-- News Content -->
-    <div id="news" class="content-section" style="display: none;">
-      <h2 onclick="showBSOD()">News</h2>
-      <marquee style="font-family: 'Comic Sans MS';">Breaking news!</marquee>
+
+    <div id="about" class="content-section" style="display:none;">
+      <h2>About</h2>
+      <p>This is the about section.</p>
     </div>
-    <!-- About Content -->
-    <div id="about" class="content-section" style="display: none;">
-      <h2>About Us</h2>
-    </div>
-    <!-- Contact Content -->
-    <div id="contact" class="content-section" style="display: none;">
-      <h2>Contact</h2>
-      <p>Email us at: <a href="mailto:ceo@fawaz.lol">ceo@fawaz.lol</a></p>
+
+    <div id="news" class="content-section" style="display:none;">
+      <h2>News</h2>
+      <p>Breaking news will appear here.</p>
     </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <button onclick="showBSOD()">Make it BOOM!</button>
-    <div>You are the <img src="number.gif" alt="Visitor Number"> visitor to this website! Congrats!</div>
-    <img src="Rover.gif" alt="Rover">
-    <img src="w.gif" alt="w">
-    <img src="giphy.gif" alt="giphy">
-    <img src="cats.gif" alt="cats">
-    <img src="popo.gif" alt="popo">
-    <img src="UC.gif" alt="UC">
-    <img src="UC2.gif" alt="UC2">
-    <img src="rose.gif" alt="rose">
-    <img src="loading.gif" alt="loading">
-  </div>
-
+  <footer class="footer">
+    <p>You are the Visitor Number <img src="visitor_counter.gif" alt="Visitor Counter"> visitor to this website! Congrats!</p>
+  </footer>
 </body>
+
 </html>

@@ -1,64 +1,30 @@
 
-/* General Styles */
-body {
-  font-family: 'MS Sans Serif', Arial, sans-serif;
+/* Basic Layout */
+body, html {
   margin: 0;
   padding: 0;
-  background-color: #C0C0C0;
-  cursor: url('custom-cursor.cur'), auto;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-/* Taskbar */
-.taskbar {
-  background-color: #000080;
-  color: white;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: left;
-}
-
-.taskbar button {
-  background-color: #000080;
-  border: none;
-  color: white;
-  padding: 10px;
-  font-size: 14px;
-  cursor: pointer;
+.header, .menu, .content, .footer {
+  margin: 20px;
+  padding: 20px;
 }
 
 /* Header */
 .header {
-  background-color: #808080;
-  color: black;
-  padding: 10px;
-  text-align: center;
-  border-bottom: 2px solid #000;
+  background-color: #ADD8E6;
 }
 
 /* Menu */
 .menu {
-  background-color: #808080;
-  padding: 10px;
-  text-align: center;
-  border-bottom: 2px solid #000;
-}
-
-.menu button {
-  background-color: #C0C0C0;
-  border: 2px outset #000;
-  color: black;
-  padding: 10px;
-  margin: 5px;
-  font-size: 14px;
-  cursor: pointer;
+  background-color: #F0E68C;
 }
 
 /* Content */
 .content {
-  padding: 20px;
   background-color: #008080;
-  min-height: calc(100vh - 180px);
+  position: relative;  /* For positioning random GIFs */
 }
 
 .content-section {
@@ -67,26 +33,29 @@ body {
 
 /* Footer */
 .footer {
-  background-color: #808080;
-  padding: 10px;
-  text-align: center;
-  border-top: 2px solid #000;
+  background-color: #DDA0DD;
 }
 
-/* Update font to Comic Sans MS */
-body {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+/* Window-like Containers with Shadows */
+.content-section {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Add dancing text animation */
+/* Hover Effects for Buttons */
+button:hover {
+  background-color: #EEE;
+  cursor: pointer;
+}
+
+/* Comic Sans MS Font and Dancing Text */
+.dancing-text {
+  animation: dance 1s infinite;
+}
+
 @keyframes dance {
   0%   { transform: translateY(0px); }
   25%  { transform: translateY(-10px); }
   50%  { transform: translateY(0px); }
   75%  { transform: translateY(10px); }
   100% { transform: translateY(0px); }
-}
-
-.dancing-text {
-  animation: dance 1s infinite;
 }
