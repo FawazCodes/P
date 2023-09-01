@@ -50,6 +50,19 @@ function placeRandomGifs() {
 // Attach function to window load event
 window.onload = function() {
   // Show initial content
+
+
+// Function to play the BSOD.mp4 video when the "About" section is clicked
+function playAboutVideo() {
+  const videoElement = document.createElement('video');
+  videoElement.src = 'BSOD.mp4';
+  videoElement.controls = true;
+  const aboutSection = document.getElementById('about');
+  aboutSection.innerHTML = '';
+  aboutSection.appendChild(videoElement);
+  videoElement.play();
+}
+
   loadContent('home');
 };
 

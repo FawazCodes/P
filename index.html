@@ -15,12 +15,18 @@
   </header>
 
   <nav class="menu">
+    
     <button onclick="loadContent('home')">Home</button>
     <button onclick="loadContent('about')">About</button>
     <button onclick="loadContent('news')">News</button>
+    <button onclick="loadContent('contact')">Contact</button>
   </nav>
 
   <div class="content">
+    <div id="contact" class="content-section" style="display:none;">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:ceo@fawaz.lol">ceo@fawaz.lol</a></p>
+    </div>
     <div id="home" class="content-section">
       <h2>Home</h2>
       <p>This is the home section.</p>
@@ -38,7 +44,7 @@
   </div>
 
   <footer class="footer">
-    <p>You are the Visitor Number <img src="visitor_counter.gif" alt="Visitor Counter"> visitor to this website! Congrats!</p>
+    <p>You are the Visitor Number <img src="visitor_counter.gif" alt="Visitor Counter" class="visitor-counter-gif"> visitor to this website! Congrats!</p>
   </footer>
 </body>
 
