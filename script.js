@@ -31,7 +31,7 @@ function placeRandomGifs() {
   // Place 5 random GIFs
   for (let i = 0; i < 5; i++) {
     const gif = document.createElement('img');
-    const randomGifIndex = Math.floor(Math.random() * availableGifs.length);
+    const randomGifIndex = Math.floor(Math.random() * availableGifs.length); availableGifs.splice(randomGifIndex, 1);
     gif.src = availableGifs[randomGifIndex];
     const randomSize = Math.floor(Math.random() * 100) + 50;
     const randomSkew = Math.floor(Math.random() * 20) - 10;
@@ -56,7 +56,7 @@ window.onload = function() {
 function playAboutVideo() {
   const videoElement = document.createElement('video');
   videoElement.src = 'BSOD.mp4';
-  videoElement.controls = true;
+  videoElement.controls = true; videoElement.loop = true; videoElement.requestFullscreen();
   const aboutSection = document.getElementById('about');
   aboutSection.innerHTML = '';
   aboutSection.appendChild(videoElement);
