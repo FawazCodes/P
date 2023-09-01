@@ -8,6 +8,7 @@ function loadContent(section) {
   });
 
   // Show the selected content section
+  placeRandomGifs();
   document.getElementById(section).style.display = 'block';
 }
 
@@ -23,44 +24,70 @@ function freezeWebsite() {
 
 // Loading Bar
 window.onload = function() {
+  placeRandomGifs();
   // Code to simulate a loading bar can be added here
 };
 
-
-
 // Function to randomly place GIFs throughout the website
 function placeRandomGifs() {
-  // List of GIFs to be randomly placed
-  const gifs = ['Rover.gif', 'w.gif', 'giphy.gif', 'cats.gif', 'popo.gif', 'UC.gif', 'UC2.gif', 'rose.gif', 'loading.gif'];
+  // List of available GIFs
+  const availableGifs = ['Rover.gif', 'UC.gif', 'UC2.gif', 'cats.gif', 'giphy.gif', 'loading.gif', 'popo.gif', 'rose.gif', 'w.gif'];
 
-  // Clear existing GIFs (except the visitor number GIF)
-  const existingGifs = document.querySelectorAll('.random-gif');
-  existingGifs.forEach((element) => {
+  // Get the content area where GIFs will be placed
+  const contentArea = document.querySelector('.content');
+
+  // Clear any existing random GIFs
+  const existingRandomGifs = document.querySelectorAll('.random-gif');
+  existingRandomGifs.forEach((element) => {
     element.remove();
   });
 
-  // Get all content sections
-  const contentSections = document.querySelectorAll('.content-section');
-
-  // Loop through each GIF and place it randomly
-  gifs.forEach((gif) => {
-    // Choose a random content section
-    const randomSection = contentSections[Math.floor(Math.random() * contentSections.length)];
-
+  // Place 5 random GIFs
+  for (let i = 0; i < 5; i++) {
     // Create a new image element for the GIF
-    const img = document.createElement('img');
-    img.src = gif;
-    img.className = 'random-gif';
+    const gif = document.createElement('img');
 
-    // Apply random styles (size, skew)
-    const randomSize = Math.floor(Math.random() * 200) + 50;
-    const randomSkewX = Math.floor(Math.random() * 20) - 10;
-    const randomSkewY = Math.floor(Math.random() * 20) - 10;
-    img.style.width = randomSize + 'px';
-    img.style.height = randomSize + 'px';
-    img.style.transform = `skew(${randomSkewX}deg, ${randomSkewY}deg)`;
+    // Assign a random GIF from the list
+    const randomGifIndex = Math.floor(Math.random() * availableGifs.length);
+    gif.src = availableGifs[randomGifIndex];
 
-    // Append the GIF to the random content section
-    randomSection.appendChild(img);
-  });
+    // Apply random styles
+    const randomSize = Math.floor(Math.random() * 100) + 50;
+    const randomSkew = Math.floor(Math.random() * 20) - 10;
+    gif.style.width = `${randomSize}px`;
+    gif.style.transform = `skew(${randomSkew}deg)`;
+
+    // Add class for identification
+    gif.classList.add('random-gif');
+
+    // Place the GIF at a random position within the content area
+    const randomTop = Math.floor(Math.random() * (contentArea.offsetHeight - 100));
+    const randomLeft = Math.floor(Math.random() * (contentArea.offsetWidth - 100));
+    gif.style.position = 'absolute';
+    gif.style.top = `${randomTop}px`;
+    gif.style.left = `${randomLeft}px`;
+
+    // Append the GIF to the content area
+    contentArea.appendChild(gif);
+  }
+}
+
+// Function to display BSOD.mp4 video in the "About" section
+function displayVideo() {
+  // Get the "About" content section
+  const aboutSection = document.getElementById('about');
+
+  // Clear existing content
+  aboutSection.innerHTML = '';
+
+  // Create a new video element
+  const video = document.createElement('video');
+
+  // Set video attributes
+  video.src = 'BSOD.mp4';
+  video.controls = true;
+  video.autoplay = true;
+
+  // Append the video to the "About" section
+  aboutSection.appendChild(video);
 }

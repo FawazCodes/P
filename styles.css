@@ -1,7 +1,7 @@
 
 /* General Styles */
 body {
-  font-family: 'Comic Sans MS', 'MS Sans Serif', Arial, sans-serif;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #C0C0C0;
@@ -56,9 +56,8 @@ body {
 
 /* Content */
 .content {
-  background-color: #008080;
   padding: 20px;
-  background-color: #FFF;
+  background-color: #008080;
   min-height: calc(100vh - 180px);
 }
 
@@ -72,4 +71,22 @@ body {
   padding: 10px;
   text-align: center;
   border-top: 2px solid #000;
+}
+
+/* Update font to Comic Sans MS */
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Add dancing text animation */
+@keyframes dance {
+  0%   { transform: translateY(0px); }
+  25%  { transform: translateY(-10px); }
+  50%  { transform: translateY(0px); }
+  75%  { transform: translateY(10px); }
+  100% { transform: translateY(0px); }
+}
+
+.dancing-text {
+  animation: dance 1s infinite;
 }
