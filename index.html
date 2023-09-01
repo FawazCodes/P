@@ -24,7 +24,7 @@
   <div class="menu">
     <button onclick="loadContent('home')">Home</button>
     <button onclick="loadContent('news')">News</button>
-    <button onclick="loadContent('about')">About</button>
+    
     <button onclick="loadContent('contact')">Contact</button>
   </div>
 
@@ -64,6 +64,29 @@
     <img src="rose.gif" alt="rose">
     <img src="loading.gif" alt="loading">
   </div>
+
+
+<!-- About Section -->
+<div class="content-section" id="about" style="display: none;">
+  <video controls width="300">
+    <source src="BSOD.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<script>
+  // Place random GIFs on page load
+  window.onload = function() {
+    placeRandomGifs();
+  };
+
+  // Modify the existing loadContent function to place random GIFs after content change
+  const originalLoadContent = loadContent;
+  loadContent = function(section) {
+    originalLoadContent(section);
+    placeRandomGifs();
+  };
+</script>
 
 </body>
 </html>
