@@ -93,3 +93,31 @@ button:active {
 /* Pixelated Graphics */
 /* Could use pixelated images for icons, backgrounds, etc. */
 
+
+/* Taskbar */
+.taskbar {
+  background-color: #000080;  /* Navy blue */
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+}
+.taskbar button {
+  background-color: #000080;  /* Navy blue */
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Taskbar styles */
+.taskbar {
+  background-color: #000080;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
