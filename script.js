@@ -19,7 +19,7 @@ function loadContent(section) {
 
 // Function to randomly place GIFs throughout the website
 function placeRandomGifs() {
-  const availableGifs = ['Rover.gif', 'UC.gif', 'UC2.gif', 'cats.gif', 'giphy.gif', 'loading.gif', 'popo.gif', 'rose.gif', 'w.gif', 'bunny.gif', 'bunny2.gif', 'bunny3.gif', 'horse.gif'];
+  const availableGifs = ['Rover.gif', 'UC.gif', 'UC2.gif', 'cats.gif', 'giphy.gif', 'loading.gif', 'popo.gif', 'rose.gif', 'w.gif'];
   const contentArea = document.querySelector('.content');
 
   // Clear any existing random GIFs
@@ -37,7 +37,7 @@ function placeRandomGifs() {
     const randomGifIndex = Math.floor(Math.random() * availableGifs.length);
     const selectedGif = availableGifs.splice(randomGifIndex, 1)[0]; if (availableGifs.length === 0) availableGifs.push(...{gif_names});
     
-    gif.src = selectedGif;
+    gif.src = availableGifs[randomGifIndex];
     const randomSize = Math.floor(Math.random() * 100) + 50;
     const randomSkew = Math.floor(Math.random() * 20) - 10;
     gif.style.width = `${randomSize}px`;
@@ -58,15 +58,36 @@ window.onload = function() {
 
 
 // Function to play the BSOD.mp4 video when the "About" section is clicked
-function playAboutVideo() {
+function playAboutVideo() {function playAboutVideo() {
+  // Create a new video element
   const videoElement = document.createElement('video');
+  
+  // Set the source, controls, and looping
   videoElement.src = 'BSOD.mp4';
-  videoElement.controls = true; videoElement.loop = true; videoElement.onloadedmetadata = function() { videoElement.requestFullscreen(); }; videoElement.loop = true; videoElement.requestFullscreen();
+  videoElement.controls = true;
+  videoElement.loop = true;
+  
+  // Debugging: Log metadata loading
+  videoElement.onloadedmetadata = function() {
+    console.log("Video metadata loaded.");
+    videoElement.play().then(() => {
+      console.log("Video started playing.");
+      videoElement.requestFullscreen();
+    }).catch((error) => {
+      console.log("Failed to play video:", error);
+    });
+  };
+  
+  // Debugging: Log errors
+  videoElement.onerror = function() {
+    console.log("Video error:", videoElement.error);
+  };
+  
+  // Clear the About section and append the video element
   const aboutSection = document.getElementById('about');
   aboutSection.innerHTML = '';
   aboutSection.appendChild(videoElement);
-  videoElement.play();
-}
+}}
 
   loadContent('home');
 };
