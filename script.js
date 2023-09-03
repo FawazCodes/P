@@ -19,7 +19,7 @@ function loadContent(section) {
 
 // Function to randomly place GIFs throughout the website
 function placeRandomGifs() {
-  const availableGifs = ['Rover.gif', 'UC.gif', 'UC2.gif', 'cats.gif', 'giphy.gif', 'loading.gif', 'popo.gif', 'rose.gif', 'w.gif'];
+  const availableGifs = ['Rover.gif', 'UC.gif', 'UC2.gif', 'cats.gif', 'giphy.gif', 'loading.gif', 'popo.gif', 'rose.gif', 'w.gif', 'bunny.gif', 'bunny2.gif', 'bunny3.gif', 'horse.gif'];
   const contentArea = document.querySelector('.content');
 
   // Clear any existing random GIFs
