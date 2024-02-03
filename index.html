@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Tracking Test Page</title>
+    <title>Comprehensive Tracking Test Page</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZPVR2MV7X"></script>
     <script>
@@ -12,7 +12,7 @@
       gtag('js', new Date());
       gtag('config', 'G-QZPVR2MV7X');
 
-      // Track page views
+      // Function to track page views
       function trackPageView() {
         gtag('event', 'page_view', {
           'page_title': document.title,
@@ -21,7 +21,7 @@
         });
       }
 
-      // Track option selection
+      // Function to track option selection
       function trackOptionSelection(option) {
         gtag('event', 'select_content', {
           'content_type': 'option',
@@ -29,7 +29,7 @@
         });
       }
 
-      // Track when leaving the page
+      // Function to track when leaving the page
       function trackLeavePage(event) {
         gtag('event', 'leave_page', {
           'event_label': 'VisibilityChange',
@@ -52,31 +52,39 @@
 </head>
 <body>
 
-<h1>Welcome to the Advanced Tracking Test Page</h1>
-<p>Interact with the elements below to generate tracking data.</p>
+<h1>Welcome to the Comprehensive Tracking Test Page</h1>
+<p>Interact with the elements below to generate tracking data without tracking text input.</p>
 
 <!-- Dropdown for Option Selection -->
-<label for="options">Choose an option:</label>
-<select name="options" id="options" onchange="trackOptionSelection(this.value)">
-    <option value="Option 1">Option 1</option>
-    <option value="Option 2">Option 2</option>
-    <option value="Option 3">Option 3</option>
-</select>
+<div>
+    <label for="options">Choose an option:</label>
+    <select name="options" id="options" onchange="trackOptionSelection(this.value)">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+    </select>
+</div>
 
-<!-- Content Sections -->
+<!-- Textbox for Typing Simulation -->
+<div>
+    <label for="typingTest">Test Typing Here:</label>
+    <input type="text" id="typingTest" name="typingTest" placeholder="Type something...">
+</div>
+
+<!-- Content Sections for Interaction -->
 <section id="section1">
     <h2>Section 1</h2>
-    <p>Content of Section 1</p>
+    <p>This is the content of Section 1. Interact here for engagement tracking.</p>
 </section>
 
 <section id="section2">
     <h2>Section 2</h2>
-    <p>Content of Section 2</p>
+    <p>This is the content of Section 2. Another area for engagement interaction.</p>
 </section>
 
 <section id="section3">
     <h2>Section 3</h2>
-    <p>Content of Section 3</p>
+    <p>And this is Section 3. Your engagement here is also tracked.</p>
 </section>
 
 </body>
