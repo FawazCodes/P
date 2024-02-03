@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Tracking Test Page with Enhancements</title>
-    <!-- Google tag (gtag.js) -->
+    <title>Enhanced Interaction Test Page</title>
+    <!-- Google Analytics (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZPVR2MV7X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
+      // Your GA4 Configuration ID
       gtag('config', 'G-QZPVR2MV7X');
 
-      // Track page views
+      // Track page views automatically
       function trackPageView() {
         gtag('event', 'page_view', {
           'page_title': document.title,
@@ -21,7 +23,7 @@
         });
       }
 
-      // Track option selection
+      // Function to track option selections
       function trackOptionSelection(option) {
         gtag('event', 'select_content', {
           'content_type': 'option',
@@ -29,16 +31,7 @@
         });
       }
 
-      // Track when leaving the page
-      function trackLeavePage(event) {
-        gtag('event', 'leave_page', {
-          'event_label': 'VisibilityChange',
-          'event_category': 'Engagement',
-          'non_interaction': true
-        });
-      }
-
-      // Track button clicks
+      // Function to track button clicks
       function trackButtonClick(buttonName) {
         gtag('event', 'button_click', {
           'event_category': 'Button',
@@ -46,9 +39,22 @@
         });
       }
 
+      // Function to track when the page visibility changes (e.g., tab change, window minimize)
+      function trackVisibilityChange() {
+        if (document.visibilityState === 'hidden') {
+          gtag('event', 'leave_page', {
+            'event_label': 'VisibilityChange',
+            'event_category': 'Engagement',
+            'non_interaction': true
+          });
+        }
+      }
+
+      document.addEventListener('visibilitychange', trackVisibilityChange);
+
       // Track scroll depth
       let trackedSections = {section1: false, section2: false, section3: false};
-      window.onscroll = function() {
+      function trackScrollDepth() {
         const scrollPosition = window.scrollY + window.innerHeight;
         Object.keys(trackedSections).forEach(section => {
           const elem = document.getElementById(section);
@@ -61,45 +67,31 @@
             trackedSections[section] = true;
           }
         });
-      };
+      }
 
-      // Track page load performance
-      window.addEventListener('load', (event) => {
-        const timing = window.performance.timing;
-        const loadTime = timing.loadEventEnd - timing.navigationStart;
-        gtag('event', 'load_performance', {
-          'event_category': 'Performance',
-          'event_label': 'Page Load Time',
-          'value': loadTime
-        });
-      });
+      window.addEventListener('scroll', trackScrollDepth);
 
-      document.addEventListener('visibilitychange', function() {
-        if (document.visibilityState === 'hidden') {
-          trackLeavePage();
-        }
-      });
-
-      // Track exit intent
-      document.addEventListener('mouseout', function(event) {
-        if (!event.toElement && !event.relatedTarget) {
+      // Track exit intent (e.g., mouse moving towards the window's top edge)
+      function trackExitIntent(event) {
+        // Only trigger for movements heading to the upper page boundary
+        if (event.clientY < 50) {
           gtag('event', 'exit_intent', {
             'event_category': 'Engagement',
             'event_label': 'Mouse Out'
           });
         }
-      });
-
-      // Ensure page view is tracked on load
-      window.onload = function() {
-        trackPageView();
       }
+
+      document.addEventListener('mouseout', trackExitIntent);
+
+      // Ensure page view is tracked on initial load
+      window.onload = trackPageView;
     </script>
 </head>
 <body>
 
-<h1>Welcome to the Comprehensive Tracking Test Page</h1>
-<p>Interact with the elements below to generate tracking data without tracking text input.</p>
+<h1>Welcome to the Enhanced Interaction Test Page</h1>
+<p>Interact with the elements below to generate tracking data. Text input is not tracked to ensure privacy.</p>
 
 <!-- Dropdown for Option Selection -->
 <div>
@@ -111,7 +103,7 @@
     </select>
 </div>
 
-<!-- Textbox for Typing Simulation -->
+<!-- Textbox for Typing Simulation (Not Tracked) -->
 <div>
     <label for="typingTest">Test Typing Here:</label>
     <input type="text" id="typingTest" name="typingTest" placeholder="Type something...">
@@ -122,20 +114,20 @@
     <button id="submitButton" onclick="trackButtonClick('Submit')">Submit</button>
 </div>
 
-<!-- Content Sections for Interaction and Scroll Depth Tracking -->
+<!-- Content Sections for Scroll Tracking -->
 <section id="section1">
     <h2>Section 1</h2>
-    <p>This is the content of Section 1. Interact here for engagement tracking.</p>
+    <p>Content of Section 1. Scroll here to test engagement tracking.</p>
 </section>
 
 <section id="section2">
     <h2>Section 2</h2>
-    <p>This is the content of Section 2. Another area for engagement interaction.</p>
+    <p>Content of Section 2. Continue scrolling and interacting.</p>
 </section>
 
 <section id="section3">
     <h2>Section 3</h2>
-    <p>And this is Section 3. Your engagement here is also tracked.</p>
+    <p>Content of Section 3. Final section for scroll depth tracking.</p>
 </section>
 
 </body>
