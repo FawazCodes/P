@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Tracking Test Page</title>
+    <title>Comprehensive Tracking Test Page with Enhancements</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZPVR2MV7X"></script>
     <script>
@@ -12,7 +12,7 @@
       gtag('js', new Date());
       gtag('config', 'G-QZPVR2MV7X');
 
-      // Function to track page views
+      // Track page views
       function trackPageView() {
         gtag('event', 'page_view', {
           'page_title': document.title,
@@ -21,7 +21,7 @@
         });
       }
 
-      // Function to track option selection
+      // Track option selection
       function trackOptionSelection(option) {
         gtag('event', 'select_content', {
           'content_type': 'option',
@@ -29,7 +29,7 @@
         });
       }
 
-      // Function to track when leaving the page
+      // Track when leaving the page
       function trackLeavePage(event) {
         gtag('event', 'leave_page', {
           'event_label': 'VisibilityChange',
@@ -38,9 +38,55 @@
         });
       }
 
+      // Track button clicks
+      function trackButtonClick(buttonName) {
+        gtag('event', 'button_click', {
+          'event_category': 'Button',
+          'event_label': buttonName
+        });
+      }
+
+      // Track scroll depth
+      let trackedSections = {section1: false, section2: false, section3: false};
+      window.onscroll = function() {
+        const scrollPosition = window.scrollY + window.innerHeight;
+        Object.keys(trackedSections).forEach(section => {
+          const elem = document.getElementById(section);
+          if (scrollPosition > elem.offsetTop && !trackedSections[section]) {
+            gtag('event', 'scroll_depth', {
+              'event_category': 'Scroll',
+              'event_label': section,
+              'value': Math.round((scrollPosition / document.body.offsetHeight) * 100)
+            });
+            trackedSections[section] = true;
+          }
+        });
+      };
+
+      // Track page load performance
+      window.addEventListener('load', (event) => {
+        const timing = window.performance.timing;
+        const loadTime = timing.loadEventEnd - timing.navigationStart;
+        gtag('event', 'load_performance', {
+          'event_category': 'Performance',
+          'event_label': 'Page Load Time',
+          'value': loadTime
+        });
+      });
+
       document.addEventListener('visibilitychange', function() {
         if (document.visibilityState === 'hidden') {
           trackLeavePage();
+        }
+      });
+
+      // Track exit intent
+      document.addEventListener('mouseout', function(event) {
+        if (!event.toElement && !event.relatedTarget) {
+          gtag('event', 'exit_intent', {
+            'event_category': 'Engagement',
+            'event_label': 'Mouse Out'
+          });
         }
       });
 
@@ -71,7 +117,12 @@
     <input type="text" id="typingTest" name="typingTest" placeholder="Type something...">
 </div>
 
-<!-- Content Sections for Interaction -->
+<!-- Button for Click Tracking -->
+<div>
+    <button id="submitButton" onclick="trackButtonClick('Submit')">Submit</button>
+</div>
+
+<!-- Content Sections for Interaction and Scroll Depth Tracking -->
 <section id="section1">
     <h2>Section 1</h2>
     <p>This is the content of Section 1. Interact here for engagement tracking.</p>
