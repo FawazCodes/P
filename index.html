@@ -3,45 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Test Page</title>
+    <title>Advanced Tracking Test Page</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZPVR2MV7X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-QZPVR2MV7X');
+
+      // Track page views
+      function trackPageView() {
+        gtag('event', 'page_view', {
+          'page_title': document.title,
+          'page_location': window.location.href,
+          'page_path': window.location.pathname
+        });
+      }
+
+      // Track option selection
+      function trackOptionSelection(option) {
+        gtag('event', 'select_content', {
+          'content_type': 'option',
+          'item_id': option
+        });
+      }
+
+      // Track when leaving the page
+      function trackLeavePage(event) {
+        gtag('event', 'leave_page', {
+          'event_label': 'VisibilityChange',
+          'event_category': 'Engagement',
+          'non_interaction': true
+        });
+      }
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'hidden') {
+          trackLeavePage();
+        }
+      });
+
+      // Ensure page view is tracked on load
+      window.onload = function() {
+        trackPageView();
+      }
     </script>
 </head>
 <body>
 
-<h1>Welcome to the Privacy Test Page</h1>
-<p>This page is designed to test tracking interactions and session data.</p>
+<h1>Welcome to the Advanced Tracking Test Page</h1>
+<p>Interact with the elements below to generate tracking data.</p>
 
-<!-- Example Links for Interaction -->
-<nav>
-    <ul>
-        <li><a href="#section1">Section 1</a></li>
-        <li><a href="#section2">Section 2</a></li>
-        <li><a href="#section3">Section 3</a></li>
-    </ul>
-</nav>
+<!-- Dropdown for Option Selection -->
+<label for="options">Choose an option:</label>
+<select name="options" id="options" onchange="trackOptionSelection(this.value)">
+    <option value="Option 1">Option 1</option>
+    <option value="Option 2">Option 2</option>
+    <option value="Option 3">Option 3</option>
+</select>
 
-<!-- Content Sections for Scrolling and Engagement -->
+<!-- Content Sections -->
 <section id="section1">
     <h2>Section 1</h2>
-    <p>This is the content of Section 1. Scroll, click, and interact with the page to generate tracking data.</p>
+    <p>Content of Section 1</p>
 </section>
 
 <section id="section2">
     <h2>Section 2</h2>
-    <p>This is the content of Section 2. It's another area to explore for tracking interactions.</p>
+    <p>Content of Section 2</p>
 </section>
 
 <section id="section3">
     <h2>Section 3</h2>
-    <p>Finally, this is Section 3. Your interactions here are also tracked for analysis.</p>
+    <p>Content of Section 3</p>
 </section>
 
 </body>
