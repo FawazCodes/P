@@ -1,134 +1,96 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Interaction Test Page</title>
-    <!-- Google Analytics (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZPVR2MV7X"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      // Your GA4 Configuration ID
-      gtag('config', 'G-QZPVR2MV7X');
-
-      // Track page views automatically
-      function trackPageView() {
-        gtag('event', 'page_view', {
-          'page_title': document.title,
-          'page_location': window.location.href,
-          'page_path': window.location.pathname
-        });
-      }
-
-      // Function to track option selections
-      function trackOptionSelection(option) {
-        gtag('event', 'select_content', {
-          'content_type': 'option',
-          'item_id': option
-        });
-      }
-
-      // Function to track button clicks
-      function trackButtonClick(buttonName) {
-        gtag('event', 'button_click', {
-          'event_category': 'Button',
-          'event_label': buttonName
-        });
-      }
-
-      // Function to track when the page visibility changes (e.g., tab change, window minimize)
-      function trackVisibilityChange() {
-        if (document.visibilityState === 'hidden') {
-          gtag('event', 'leave_page', {
-            'event_label': 'VisibilityChange',
-            'event_category': 'Engagement',
-            'non_interaction': true
-          });
-        }
-      }
-
-      document.addEventListener('visibilitychange', trackVisibilityChange);
-
-      // Track scroll depth
-      let trackedSections = {section1: false, section2: false, section3: false};
-      function trackScrollDepth() {
-        const scrollPosition = window.scrollY + window.innerHeight;
-        Object.keys(trackedSections).forEach(section => {
-          const elem = document.getElementById(section);
-          if (scrollPosition > elem.offsetTop && !trackedSections[section]) {
-            gtag('event', 'scroll_depth', {
-              'event_category': 'Scroll',
-              'event_label': section,
-              'value': Math.round((scrollPosition / document.body.offsetHeight) * 100)
-            });
-            trackedSections[section] = true;
-          }
-        });
-      }
-
-      window.addEventListener('scroll', trackScrollDepth);
-
-      // Track exit intent (e.g., mouse moving towards the window's top edge)
-      function trackExitIntent(event) {
-        // Only trigger for movements heading to the upper page boundary
-        if (event.clientY < 50) {
-          gtag('event', 'exit_intent', {
-            'event_category': 'Engagement',
-            'event_label': 'Mouse Out'
-          });
-        }
-      }
-
-      document.addEventListener('mouseout', trackExitIntent);
-
-      // Ensure page view is tracked on initial load
-      window.onload = trackPageView;
-    </script>
+<meta charset="utf-8"/>
+<title>FAWWWWWWWAAAAAZZZ</title>
+<link href="styles.css" rel="stylesheet"/>
+<script defer="" src="script.js"></script>
 </head>
 <body>
-
-<h1>Welcome to the Enhanced Interaction Test Page</h1>
-<p>Interact with the elements below to generate tracking data. Text input is not tracked to ensure privacy.</p>
-
-<!-- Dropdown for Option Selection -->
-<div>
-    <label for="options">Choose an option:</label>
-    <select name="options" id="options" onchange="trackOptionSelection(this.value)">
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
-        <option value="Option 3">Option 3</option>
-    </select>
+<!-- Taskbar -->
+<div class="taskbar">
+<button onclick="playAboutVideo()">Start</button>
 </div>
-
-<!-- Textbox for Typing Simulation (Not Tracked) -->
-<div>
-    <label for="typingTest">Test Typing Here:</label>
-    <input type="text" id="typingTest" name="typingTest" placeholder="Type something...">
+<header class="header">
+<h1>FFFFAAAWWWWAAAAZZZZZ!!!!</h1>
+</header>
+<nav class="menu">
+<button onclick="loadContent('home')">Home</button>
+<button onclick="loadContent('about')">About</button>
+<button onclick="loadContent('news')">News</button>
+<button onclick="loadContent('contact')">Contact</button>
+</nav>
+<div class="content">
+<div class="content-section" id="contact" style="display:none;">
+<h2>Contact</h2>
+<p>Email: <a href="mailto:ceo@fawaz.lol">ceo@fawaz.lol</a></p>
+<p>القط الفضولي: <a href="https://curiouscat.live/iBreakTrutles">https://curiouscat.live/iBreakTrutles</a></p>
 </div>
-
-<!-- Button for Click Tracking -->
-<div>
-    <button id="submitButton" onclick="trackButtonClick('Submit')">Submit</button>
 </div>
+<div class="content-section" id="home">
+<h2>Home</h2>
+<p>This is the home section, i guess.</p>
+</div>
+<div class="content-section" id="about" style="display:none;">
+<h2>About</h2>
+<p>This is definitely the about section 😧.</p>
+</div>
+<div class="content-section" id="news" style="display:none;">
+<h2>News</h2>
+<marquee behavior="scroll" direction="left" scrollamount="5">
+Breaking News: Cats have declared independence! |
 
-<!-- Content Sections for Scroll Tracking -->
-<section id="section1">
-    <h2>Section 1</h2>
-    <p>Content of Section 1. Scroll here to test engagement tracking.</p>
-</section>
+Update: The moon is now made of blue cheese! |
 
-<section id="section2">
-    <h2>Section 2</h2>
-    <p>Content of Section 2. Continue scrolling and interacting.</p>
-</section>
+Just In: Scientists confirm that the Earth is actually flat! |
 
-<section id="section3">
-    <h2>Section 3</h2>
-    <p>Content of Section 3. Final section for scroll depth tracking.</p>
-</section>
+Exclusive: Aliens have made contact and they want coffee! |
 
-</body>
-</html>
+Urgent: The internet is about to run out of memes! |
+
+Announcement: Time travel is now possible, but only on Tuesdays! |
+
+Shocking Report: Einstein's theory of relativity proven wrong by cats |
+
+Historic Moment: Dogs and cats sign peace treaty, declare "pets are friends" |
+
+Unbelievable: World's supply of bacon mysteriously vanishes overnight |
+
+Bizarre Occurrence: Gravity stops working on Wednesdays |
+
+Baffling Mystery: Where did all the socks go? Dryer portal to sock dimension discovered |
+
+Startling Revelation: Trees confirmed as giant camouflaged robots |
+
+Breathtaking News: Rainbows now physically made of skittles |
+
+Incredible Feat: Man breaks world record for bubble gum bubble blowing |
+
+Bizarre Event: The moon is made of cheese but only on the first Tuesday of each month |
+
+Baffling Phenomenon: Spoons now randomly turn into forks when you're not looking |
+
+Shocking Twist: Netflix announces new series starring cats as lawyers and dogs as police officers |
+
+Unbelievable Development: Ocean levels rapidly rising due to global lemonade drinking contest |
+
+Absurdity: Pigs fly after swallowing magical rainbow feathers |
+
+Preposterous News: Aliens make contact, want to know why chickens can't fly |
+
+Ridiculous Report: Time travel invented but only works on holidays |
+
+Laughable Claim: Earth confirmed as giant pizza, humanity lives on one slice |
+
+Nonsensical Bulletin: Memes declared international currency, all money now just images of cats |
+
+Silly Headline: Scientists conclude that hats increase intelligence by 73%
+
+</marquee>
+</div>
+</body></html>
+<footer class="footer">
+<p>You are the visitor number <img class="visitor-counter-gif" src="number.gif"/> to t h i s website! Congrats!</p>
+</footer>
